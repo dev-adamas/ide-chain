@@ -1,0 +1,20 @@
+.award > div{
+  background-image: url(./images/sc-il.jpg);
+  background-position: 90% 0;
+  background-size: 188px 188px;
+  background-repeat: no-repeat;
+  background-color: rgba(0, 255, 0, 0.026);
+}
+
+#team{
+    background-image: url(./images/squad-main.webp);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-color: #121212ab;
+    background-blend-mode: overlay;
+    color: #efefef;
+    height: 80vh;
+    align-content: center;
+    padding: 6rem 0rem;
+}

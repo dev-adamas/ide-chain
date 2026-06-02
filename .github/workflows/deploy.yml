@@ -1,21 +1,30 @@
-name: infinityfree project CI
+name: Deploy to InfinityFree
+
 on:
   push:
     branches:
-      - main
+      - main  # Triggers the deploy when you push to the main branch
 
 jobs:
   web-deploy:
-    name: test deploy by GitHub CI Actions
+    name: 🎉 Deploy
     runs-on: ubuntu-latest
     steps:
-    - name: GitHub action plugin/extension
-    uses: actions/checkout@v4
-    - name: FTP deploy
-      uses: SamKirkland/Ftp-Deploy-Action@v4.3.5
-      with:
-      server: ${{ secrets.FTP_SERVER }}
-      username: ${{ secrets.FTP_USER }}
-      password: ${{ secrets.FTP_PASSWD }}
-      server-dir: htdocs/
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v4
 
+    # Optional: If your project needs a build step (like React, Vue, or Vite), 
+    # uncomment the lines below to install dependencies and build your project.
+    # - name: 🔨 Install and Build
+    #   run: |
+    #     npm install
+    #     npm run build
+
+    - name: 🚀 FTP Deploy
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USER }}
+        password: ${{ secrets.FTP_PASSWD }}
+        # local-dir: ./     # Change this to ./dist/ or ./build/ if using a framework
+        server-dir: htdocs/ # Uploads directly into InfinityFree's public folder

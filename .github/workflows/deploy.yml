@@ -1,0 +1,21 @@
+name: infinityfree project CI
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  web-deploy:
+    name: test deploy by GitHub CI Actions
+    runs-on: ubuntu-latest
+    steps:
+    - name: GitHub action plugin/extension
+    uses: actions/checkout@v4
+    - name: FTP deploy
+      uses: SamKirkland/Ftp-Deploy-Action@v4.3.5
+      with:
+      server: ${{ secrets.FTP_SERVER }}
+      username: ${{ secrets.FTP_USER }}
+      password: ${{ secrets.FTP_PASSWD }}
+      server-dir: htdocs/
+
